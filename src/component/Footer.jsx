@@ -1,4 +1,5 @@
 import { FaLeaf, FaEnvelope, FaLocationDot, FaPhone, FaHeart } from "react-icons/fa6";
+import Logo from "./Logo";
 
 export default function Footer() {
     return (
@@ -17,15 +18,8 @@ export default function Footer() {
 
                     {/* Column 1: Brand Info & Founder */}
                     <div className="space-y-4">
-                        <a href="#" className="flex items-center gap-2">
-                            <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400">
-                                <FaLeaf className="text-xl" />
-                            </div>
-                            <span className="font-extrabold text-2xl tracking-wide text-white">
-                                Barakah <span className="text-amber-400">Mart</span>
-                            </span>
-                        </a>
-
+                       
+<Logo/>
                         <p className="text-emerald-200/80 text-sm leading-relaxed">
                             Your trusted shop for premium Islamic non-food essentials, including authentic prayer caps, handcrafted tasbih, non-alcoholic concentrated attar perfumes, and natural miswak sticks.
                         </p>

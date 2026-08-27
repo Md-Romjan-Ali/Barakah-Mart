@@ -1,5 +1,6 @@
 "use client";
 
+import Logo from "@/component/Logo";
 import Link from "next/link";
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaLeaf, FaEnvelope, FaLock } from "react-icons/fa6";
@@ -45,14 +46,7 @@ export default function LoginPage() {
         
         {/* Header & Logo */}
         <div className="text-center space-y-2">
-          <a href="#" className="inline-flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400">
-              <FaLeaf className="text-xl" />
-            </div>
-            <span className="font-extrabold text-2xl tracking-wide text-white">
-              Barakah <span className="text-amber-400">Mart</span>
-            </span>
-          </a>
+        <Logo/>
           <h2 className="text-xl font-bold text-white pt-2">Welcome Back</h2>
           <p className="text-emerald-200/80 text-xs">
             Sign in to access your saved Sunnah items & order history
