@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Barakah Mart
+
+This is a Next.js storefront application.
+
+## Dashboard and hydration fixes
+
+Two separate problems caused the reported errors:
+
+- The mobile menu used a HeroUI `Button` inside `DropdownTrigger`. `DropdownTrigger` already renders a native `<button>`, so this produced invalid `<button>`-inside-`<button>` HTML and caused the hydration error. The trigger now contains a non-button `span` instead.
+- The dashboard route folder is named `deshboard`, but its links used the misspelled path `deshbaord`. Those links now point to `/deshboard/add-product` and `/deshboard/sell-product`, which removes the 404 for the sell-product page.
+- The navbar is fixed, so dashboard content without top spacing could appear hidden underneath it. The shared dashboard layout now adds spacing, a responsive sidebar, and a visible dark dashboard surface.
+- The dashboard landing component had been renamed but its default export still used the old name. That caused the production build to fail while collecting `/deshboard`; the export now matches the component name.
+
+The dashboard layout is a nested layout for the `/deshboard` route group. It displays the dashboard navigation beside the page content, and its child pages are available at `/deshboard`, `/deshboard/add-product`, and `/deshboard/sell-product`.
 
 ## Getting Started
 

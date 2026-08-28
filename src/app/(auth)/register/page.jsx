@@ -65,7 +65,6 @@ export default function RegisterPage() {
 
                 {/* Google Sign-Up Button */}
                 <button
-                    type="button"
                     onClick={handleGoogleSignUp}
                     className="w-full flex items-center justify-center gap-3 py-3 px-4 bg-emerald-900/80 hover:bg-emerald-800 text-white border border-emerald-700/70 rounded-xl font-medium text-sm transition-all duration-200 shadow-sm hover:border-amber-400/40"
                 >

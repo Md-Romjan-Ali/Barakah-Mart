@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@heroui/react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
 import { FaBasketShopping, FaUser, FaLeaf, FaBars, FaXmark, } from "react-icons/fa6";
 import Link from "next/link";
 import Logo from "./Logo";
@@ -55,8 +55,8 @@ export default function Navbar() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/sunnah" className="text-emerald-100/90 hover:text-amber-400 transition-colors">
-                                Sunnah Essentials
+                            <Link href="/deshboard" className="text-emerald-100/90 hover:text-amber-400 transition-colors">
+                                DeshBoard
                             </Link>
                         </li>
                     </ul>
@@ -88,14 +88,13 @@ export default function Navbar() {
                         <div className="md:hidden">
                             <Dropdown placement="bottom-end">
                                 <DropdownTrigger>
-                                    <Button
-                                        isIconOnly
-                                        className="bg-emerald-900/80 text-emerald-100 border border-emerald-700/50 rounded-xl"
+                                    <span
+                                        className="inline-flex h-10 w-10 items-center justify-center bg-emerald-900/80 text-emerald-100 border border-emerald-700/50 rounded-xl"
                                         aria-label="Open Menu"
                                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                                     >
                                         {isMobileMenuOpen ? <FaXmark className="text-xl" /> : <FaBars className="text-xl" />}
-                                    </Button>
+                                    </span>
                                 </DropdownTrigger>
 
                                 <DropdownMenu
