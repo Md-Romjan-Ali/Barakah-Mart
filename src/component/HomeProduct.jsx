@@ -72,7 +72,7 @@ import DisplayProduct from "./DisplayProduct";
 // ];
 
 export default async function HomeProduct() {
-   const initialProducts=await getProduct()
+   const initialProducts=await getProduct(2)
 
     return (
         <section id="products" className="bg-emerald-950 text-white py-10 px-6 relative overflow-hidden font-sans">

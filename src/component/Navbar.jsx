@@ -50,7 +50,7 @@ export default function Navbar() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/products" className="text-emerald-100/90 hover:text-amber-400 transition-colors">
+                            <Link href="/all-product" className="text-emerald-100/90 hover:text-amber-400 transition-colors">
                                 All Products
                             </Link>
                         </li>

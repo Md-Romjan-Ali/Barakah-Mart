@@ -6,7 +6,7 @@ const getData = async (endPoind) => {
     })
     return await res.json()
 }
-
-export const getProduct=async()=>{
-    return getData(`/api/getproduct`)
+// initial limit data
+export const getProduct=async(limit)=>{
+    return getData(`/api/getproduct?limit=${limit}`)
 }
