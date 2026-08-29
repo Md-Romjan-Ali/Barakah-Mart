@@ -75,7 +75,7 @@ export default async function HomeProduct() {
    const initialProducts=await getProduct()
 
     return (
-        <section id="products" className="bg-emerald-950 text-white py-20 px-6 relative overflow-hidden font-sans">
+        <section id="products" className="bg-emerald-950 text-white py-10 px-6 relative overflow-hidden font-sans">
 
             {/* Background Grid Pattern */}
             <div
@@ -100,9 +100,9 @@ export default async function HomeProduct() {
                         Explore authentic prayer caps, handcrafted tasbihs, and pure non-alcoholic attars crafted for daily use.
                     </p>
                 </div>
-
-            </div>
 <DisplayProduct initialProducts={initialProducts}/>
+            </div>
+
             {/* Product Details Modal */}
             {/* {activeProduct && (
                 <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">

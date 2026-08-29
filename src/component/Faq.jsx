@@ -1,7 +1,8 @@
 "use client";
 
-import { Accordion, AccordionItem } from "@heroui/react";
-import { FaCircleQuestion, FaLeaf } from "react-icons/fa6";
+import { Accordion } from "@heroui/react";
+import { BiChevronDown } from "react-icons/bi";
+import { FaLeaf } from "react-icons/fa6";
 
 const faqData = [
     {
@@ -49,7 +50,7 @@ export default function Faq() {
                 }}
             />
 
-            <div className="max-w-4xl mx-auto relative z-10 space-y-10">
+            <div className="max-w-7xl mx-auto relative z-10 space-y-10">
 
                 {/* Section Title */}
                 <div className="text-center space-y-3">
@@ -68,28 +69,27 @@ export default function Faq() {
                 {/* HeroUI Accordion */}
                 <div className="bg-emerald-900/30 border border-emerald-700/60 rounded-3xl p-4 sm:p-6 backdrop-blur-md shadow-2xl">
                     <Accordion
-                        variant="splitted"
-                        selectionMode="multiple"
-                        className="gap-3"
-                        itemClasses={{
-                            base: "group-[.is-splitted]:bg-emerald-950/80 group-[.is-splitted]:border group-[.is-splitted]:border-emerald-800/80 group-[.is-splitted]:rounded-2xl group-[.is-splitted]:shadow-md px-4 py-1",
-                            title: "text-white font-semibold text-base sm:text-lg group-data-[expanded=true]:text-amber-400 transition-colors",
-                            subtitle: "text-emerald-300 text-xs",
-                            indicator: "text-amber-400 font-bold text-xl",
-                            content: "text-emerald-200/90 text-sm leading-relaxed pb-4 pt-1 border-t border-emerald-800/50 mt-2",
-                        }}
-                    >
-                        {faqData.map((item) => (
-                            <AccordionItem
-                                key={item.key}
-                                aria-label={item.question}
-                                title={item.question}
-                                startContent={
-                                    <FaCircleQuestion className="text-amber-400 text-lg flex-shrink-0" />
-                                }
+                        className="w-full space-y-3">
+                        {faqData.map((item, index) => (
+                            <Accordion.Item
+                                key={index}
+                                className="bg-emerald-950/80 border border-emerald-800/80 rounded-2xl overflow-hidden shadow-md transition-all duration-200 hover:border-amber-400/40"
                             >
-                                {item.answer}
-                            </AccordionItem>
+                                <Accordion.Heading className="m-0">
+                                    <Accordion.Trigger className="w-full flex items-center justify-between p-5 text-left text-white font-semibold text-base sm:text-lg hover:text-amber-400 transition-colors focus:outline-none cursor-pointer">
+                                        <span>{item.question}</span>
+                                        <Accordion.Indicator className="text-amber-400 text-2xl transition-transform duration-300">
+                                            <BiChevronDown />
+                                        </Accordion.Indicator>
+                                    </Accordion.Trigger>
+                                </Accordion.Heading>
+
+                                <Accordion.Panel className="px-5 pb-5 pt-1 text-amber-400 text-sm leading-relaxed border-t border-emerald-800/50">
+                                    <Accordion.Body className="text-amber-400">
+                                        {item.answer}
+                                    </Accordion.Body>
+                                </Accordion.Panel>
+                            </Accordion.Item>
                         ))}
                     </Accordion>
                 </div>
