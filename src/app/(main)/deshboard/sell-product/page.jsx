@@ -1,18 +1,18 @@
+
+import DeleteProducts from '@/component/DeleteProduct';
 import { getOrderData } from '@/lib/allGet';
 import Image from 'next/image';
 import React from 'react';
 import { FaBoxesPacking, FaLocationDot, FaPhone, FaTrash, FaUser } from 'react-icons/fa6';
 
 const SellProduct = async () => {
-    const orderData = await getOrderData()
-    console.log(orderData, 'from sell ');
-    const deleteProduct=()=>{
-      
-    }
-    return (
-      <div className="w-full bg-emerald-950 text-white py-8 px-4 sm:px-6 font-sans">
+  const orderData = await getOrderData()
+  console.log(orderData, 'from sell ');
+
+  return (
+    <div className="w-full bg-emerald-950 text-white py-8 px-4 sm:px-6 font-sans">
       <div className="max-w-7xl mx-auto space-y-6">
-        
+
         {/* Table Header / Title */}
         <div className="flex items-center justify-between border-b border-emerald-800/80 pb-4">
           <div className="flex items-center gap-3">
@@ -38,7 +38,7 @@ const SellProduct = async () => {
         <div className="bg-emerald-900/40 border border-emerald-700/60 rounded-3xl overflow-hidden backdrop-blur-md shadow-2xl">
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-emerald-700">
             <table className="w-full text-left border-collapse min-w-[700px]">
-              
+
               {/* Table Head */}
               <thead>
                 <tr className="bg-emerald-950/80 border-b border-emerald-800/80 text-amber-400 text-xs uppercase tracking-wider">
@@ -100,9 +100,7 @@ const SellProduct = async () => {
 
                     {/* Shortened ID Badge */}
                     <td className="py-4 px-5 text-center">
-                      <button onClick={deleteProduct} className="text-red-400 cursor-pointer hover:text-red-500">
-                        <FaTrash size={22}/>
-                      </button>
+                      <DeleteProducts id={item._id} />
                     </td>
                   </tr>
                 ))}
@@ -114,7 +112,7 @@ const SellProduct = async () => {
 
       </div>
     </div>
-    );
+  );
 };
 
 export default SellProduct;
