@@ -8,7 +8,7 @@ const AllProduct = async () => {
 
     return (
         <div>
-            <section className="min-h-screen bg-emerald-950 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden font-sans">
+            <section className="min-h-screen bg-emerald-950 text-white py-16 mt-15 px-4 sm:px-6 lg:px-8 relative overflow-hidden font-sans">
 
                 {/* Background Decorative Pattern */}
                 <div

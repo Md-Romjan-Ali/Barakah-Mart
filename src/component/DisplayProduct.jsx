@@ -1,4 +1,5 @@
 "use client"
+import { OrderModal } from '@/app/(main)/all-product/OrderModal';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { FaBasketShopping, FaEye, FaStar } from 'react-icons/fa6';
@@ -29,7 +30,7 @@ const DisplayProduct = ({ initialProducts }) => {
             </div>
 
             {/* Product Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid mt-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProducts.map((product) => (
                     <div
                         key={product._id}
@@ -84,8 +85,7 @@ const DisplayProduct = ({ initialProducts }) => {
                                     className="p-2.5 bg-emerald-950 hover:bg-emerald-800 text-emerald-200 hover:text-white rounded-xl border border-emerald-700/60 transition-all text-sm flex items-center gap-1.5"
                                     aria-label="See Details"
                                 >
-                                    <FaEye />
-                                    <span className="hidden sm:inline text-xs font-semibold">Details</span>
+                                    <OrderModal product={product} />
                                 </button>
 
                                 <button

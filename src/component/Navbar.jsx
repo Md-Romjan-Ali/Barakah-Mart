@@ -5,8 +5,10 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/r
 import { FaBasketShopping, FaUser, FaLeaf, FaBars, FaXmark, } from "react-icons/fa6";
 import Link from "next/link";
 import Logo from "./Logo";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+    const pathName = usePathname()
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -30,7 +32,6 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
-
     return (
         <div className="bg-emerald-950 text-white">
 
@@ -45,17 +46,17 @@ export default function Navbar() {
                     {/* Desktop Links (HTML Standard Nav) */}
                     <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
                         <li>
-                            <Link href="/" className="text-amber-400 font-semibold transition-colors">
+                            <Link href="/" className={` font-semibold transition-colors ${pathName === '/' ? 'text-amber-400 underline' : 'text-emerald-100/90'}`}>
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link href="/all-product" className="text-emerald-100/90 hover:text-amber-400 transition-colors">
+                            <Link href="/all-product" className={` font-semibold transition-colors ${pathName === '/all-product' ? 'text-amber-400 underline' : 'text-emerald-100/90'}`}>
                                 All Products
                             </Link>
                         </li>
                         <li>
-                            <Link href="/deshboard" className="text-emerald-100/90 hover:text-amber-400 transition-colors">
+                            <Link href="/deshboard" className={` font-semibold transition-colors ${pathName === '/deshboard' ? 'text-amber-400 underline' : 'text-emerald-100/90'}`}>
                                 DeshBoard
                             </Link>
                         </li>

@@ -2,11 +2,11 @@
 
 import { Button, Chip } from "@heroui/react";
 import Image from "next/image";
-import { FaBasketShopping, FaCircleCheck, FaLeaf, FaTruckFast } from "react-icons/fa6";
+import { FaBasketShopping, FaCircleCheck, FaTruckFast } from "react-icons/fa6";
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-emerald-950 text-white min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative mt-15 bg-emerald-950 text-white min-h-[90vh] flex items-center overflow-hidden">
       {/* Background Decorative Grid Pattern */}
       <div
         className="absolute inset-0 opacity-10"
@@ -91,7 +91,7 @@ export default function HeroSection() {
               <div className="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden bg-emerald-950/60 flex items-center justify-center border border-emerald-800/50">
                 <Image
                   alt="Premium Sidr Honey & Organic Dates"
-                  src="https://images.unsplash.com/photo-1587049352847-4a222e784d38?q=80&w=800&auto=format&fit=crop"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKn_evvBl_M3im-_VhbV1AtzumEr0obcAo-47VQzcBkg&s=10"
                   width={1000}
                   height={1000}
                   className="object-cover h-full w-full rounded-2xl"

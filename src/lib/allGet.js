@@ -10,3 +10,7 @@ const getData = async (endPoind) => {
 export const getProduct=async(limit)=>{
     return getData(`/api/getproduct?limit=${limit}`)
 }
+// order data
+export const getOrderData=async()=>{
+    return getData(`/api/getorderdata`)
+}
