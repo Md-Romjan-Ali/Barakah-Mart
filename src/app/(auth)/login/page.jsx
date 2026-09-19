@@ -22,8 +22,10 @@ export default function LoginPage() {
     console.log(user, 'and', error);
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Google Login clicked");
+  const handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
