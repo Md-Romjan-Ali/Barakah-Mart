@@ -1,6 +1,7 @@
 "use client";
 
 import Logo from "@/component/Logo";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaLeaf, FaEnvelope, FaLock, FaUser } from "react-icons/fa6";
@@ -8,30 +9,18 @@ import { FcGoogle } from "react-icons/fc";
 
 export default function RegisterPage() {
     const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-    const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        console.log("Registering user:", formData);
+        const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData.entries())
+        console.log(data, 'from login');
+        const { data: user, error } = await authClient.signUp.email({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+        });
+        console.log(user, 'and', error);
     };
-
     const handleGoogleSignUp = () => {
         console.log("Google Sign Up clicked");
     };
@@ -91,10 +80,8 @@ export default function RegisterPage() {
                             <FaUser className="absolute left-3.5 text-emerald-400 text-sm" />
                             <input
                                 type="text"
-                                name="fullName"
+                                name="name"
                                 required
-                                value={formData.fullName}
-                                onChange={handleChange}
                                 placeholder="Md. Romjan Ali"
                                 className="w-full bg-emerald-950/80 border border-emerald-700/60 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-emerald-400/50 focus:outline-none focus:border-amber-400 transition-colors"
                             />
@@ -112,8 +99,6 @@ export default function RegisterPage() {
                                 type="email"
                                 name="email"
                                 required
-                                value={formData.email}
-                                onChange={handleChange}
                                 placeholder="name@example.com"
                                 className="w-full bg-emerald-950/80 border border-emerald-700/60 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-emerald-400/50 focus:outline-none focus:border-amber-400 transition-colors"
                             />
@@ -131,8 +116,6 @@ export default function RegisterPage() {
                                 type={showPassword ? "text" : "password"}
                                 name="password"
                                 required
-                                value={formData.password}
-                                onChange={handleChange}
                                 placeholder="••••••••"
                                 className="w-full bg-emerald-950/80 border border-emerald-700/60 rounded-xl pl-10 pr-10 py-2.5 text-sm text-white placeholder-emerald-400/50 focus:outline-none focus:border-amber-400 transition-colors"
                             />

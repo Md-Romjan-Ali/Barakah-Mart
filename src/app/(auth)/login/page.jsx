@@ -1,25 +1,25 @@
 "use client";
 
 import Logo from "@/component/Logo";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaLeaf, FaEnvelope, FaLock } from "react-icons/fa6";
+import { FaEye, FaEyeSlash, FaEnvelope, FaLock } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Logging in with:", formData);
+    const formData = new FormData(e.target)
+    const data = Object.fromEntries(formData.entries())
+    console.log(data, 'from login');
+    const { data: user, error } = await authClient.signIn.email({
+      email: data.email,
+      password: data.password,
+    });
+    console.log(user, 'and', error);
   };
 
   const handleGoogleLogin = () => {
@@ -28,7 +28,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-emerald-950 text-white flex items-center justify-center p-4 relative overflow-hidden font-sans">
-      
+
       {/* Background Decorative Pattern */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -43,10 +43,10 @@ export default function LoginPage() {
 
       {/* Login Card Container */}
       <div className="w-full max-w-md relative z-10 bg-emerald-900/40 border border-emerald-700/60 backdrop-blur-md p-8 rounded-3xl shadow-2xl space-y-6">
-        
+
         {/* Header & Logo */}
         <div className="text-center space-y-2">
-        <Logo/>
+          <Logo />
           <h2 className="text-xl font-bold text-white pt-2">Welcome Back</h2>
           <p className="text-emerald-200/80 text-xs">
             Sign in to access your saved Sunnah items & order history
@@ -72,7 +72,7 @@ export default function LoginPage() {
 
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          
+
           {/* Email Field */}
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-emerald-200">
@@ -84,8 +84,6 @@ export default function LoginPage() {
                 type="email"
                 name="email"
                 required
-                value={formData.email}
-                onChange={handleChange}
                 placeholder="name@example.com"
                 className="w-full bg-emerald-950/80 border border-emerald-700/60 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-emerald-400/50 focus:outline-none focus:border-amber-400 transition-colors"
               />
@@ -108,8 +106,6 @@ export default function LoginPage() {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 required
-                value={formData.password}
-                onChange={handleChange}
                 placeholder="••••••••"
                 className="w-full bg-emerald-950/80 border border-emerald-700/60 rounded-xl pl-10 pr-10 py-2.5 text-sm text-white placeholder-emerald-400/50 focus:outline-none focus:border-amber-400 transition-colors"
               />
