@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
-import { FaBasketShopping, FaUser, FaLeaf, FaBars, FaXmark, } from "react-icons/fa6";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@heroui/react";
+import { FaUser, FaBars, FaXmark, } from "react-icons/fa6";
 import Link from "next/link";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import ProductLength from "./ProductLength";
 
 export default function Navbar() {
     const pathName = usePathname()
@@ -32,6 +34,12 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
+    const { data: session } = authClient.useSession()
+    console.log(session, 'from navbar');
+    const logoutHandle = async () => {
+        await authClient.signOut();
+    }
+    
     return (
         <div className="bg-emerald-950 text-white">
 
@@ -65,24 +73,21 @@ export default function Navbar() {
                     {/* Right Action Items */}
                     <div className="flex items-center gap-4">
 
-                        {/* Cart Icon Button */}
-                        <Link href={'/my-product'}
-                            className="relative p-2.5 bg-emerald-900/60 hover:bg-emerald-800/80 text-amber-400 rounded-xl border border-emerald-700/50 transition-all"
-                        >
-                            <FaBasketShopping className="text-xl" />
-                            <span className="absolute -top-1 -right-1 bg-amber-500 text-emerald-950 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                                3
-                            </span>
-                        </Link>
+                      <ProductLength/>
 
                         {/* Login Button */}
-                        <Link
-                            href="/login"
-                            className="hidden sm:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-5 py-2.5 rounded-xl transition-all shadow-md shadow-amber-500/10"
-                        >
-                            <FaUser className="text-sm" />
-                            <span>Login</span>
-                        </Link>
+                        {
+                            session ? <Button variant="danger" className="" onClick={logoutHandle}>LogOut</Button>
+                                :
+                                <Link
+                                    href="/login"
+                                    className="hidden sm:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-5 py-2.5 rounded-xl transition-all shadow-md shadow-amber-500/10"
+                                >
+                                    <FaUser className="text-sm" />
+                                    <span>Login</span>
+                                </Link>
+                        }
+
 
                         {/* Mobile Dropdown Feature (HeroUI Dropdown) */}
                         <div className="md:hidden">

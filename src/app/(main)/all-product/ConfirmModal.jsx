@@ -1,5 +1,6 @@
 "use client";
 import { postOrder } from "@/lib/allPost";
+import { authClient } from "@/lib/auth-client";
 import { Button, Modal } from "@heroui/react";
 import {
     FaCartPlus,
@@ -11,12 +12,10 @@ import {
     FaXmark,
 } from "react-icons/fa6";
 export function ConfirmModal({ product }) {
+    const { data: session } = authClient.useSession()
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const session = await auth.api.getSession({
-            headers: await headers(),
-        });
-        console.log(session?.user);
+
         // Extract all form values cleanly using Object.fromEntries
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
@@ -28,7 +27,7 @@ export function ConfirmModal({ product }) {
             ...data,
         };
         const orderd = await postOrder(orderData)
-        console.log("Order Confirmed:", orderData);
+        console.log(orderd, "Order Confirmed:");
         alert("Order placed successfully! We will contact you soon.");
 
     };

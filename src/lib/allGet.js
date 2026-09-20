@@ -14,6 +14,6 @@ export const getProduct=async(limit)=>{
 export const getOrderData=async()=>{
     return getData(`/api/getorderdata`)
 }
-export const getDataByPhone=async(email)=>{
+export const getDataByEmail=async(email)=>{
 return getData(`/api/getmydata?email=${email}`)
 }
