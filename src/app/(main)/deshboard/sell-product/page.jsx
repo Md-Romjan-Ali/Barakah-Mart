@@ -7,7 +7,6 @@ import { FaBoxesPacking, FaLocationDot, FaPhone, FaTrash, FaUser } from 'react-i
 
 const SellProduct = async () => {
   const orderData = await getOrderData()
-  console.log(orderData, 'from sell ');
 
   return (
     <div className="w-full bg-emerald-950 text-white py-8 px-4 sm:px-6 font-sans">

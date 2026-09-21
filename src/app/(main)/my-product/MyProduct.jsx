@@ -5,7 +5,7 @@ import { FaPen, FaTrash } from "react-icons/fa6";
 
 const MyProduct = ({ myData }) => {
     return (
-        <div className="w-full bg-emerald-950 mt-20 text-white p-4 font-sans">
+        <div className="w-full bg-emerald-950 text-white p-4 font-sans">
             <div className="max-w-3xl mx-auto bg-emerald-900/40 border border-emerald-700/60 rounded-2xl overflow-hidden shadow-xl">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">

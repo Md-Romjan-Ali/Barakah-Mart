@@ -26,8 +26,7 @@ export function ConfirmModal({ product }) {
             email: session?.user.email,
             ...data,
         };
-        const orderd = await postOrder(orderData)
-        console.log(orderd, "Order Confirmed:");
+        await postOrder(orderData)
         alert("Order placed successfully! We will contact you soon.");
 
     };

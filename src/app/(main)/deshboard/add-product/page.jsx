@@ -12,8 +12,7 @@ export default function AddProductForm() {
         e.preventDefault();
         const formData = new FormData(e.target)
         const productData = Object.fromEntries(formData.entries())
-        const postdata = await postProduct(productData)
-        console.log(postdata, 'from add product');
+        await postProduct(productData)
 
     };
 

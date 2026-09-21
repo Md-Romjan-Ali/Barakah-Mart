@@ -13,16 +13,13 @@ export default function RegisterPage() {
         e.preventDefault();
         const formData = new FormData(e.target)
         const data = Object.fromEntries(formData.entries())
-        console.log(data, 'from login');
         const { data: user, error } = await authClient.signUp.email({
             name: data.name,
             email: data.email,
             password: data.password,
         });
-        console.log(user, 'and', error);
     };
     const handleGoogleSignUp = () => {
-        console.log("Google Sign Up clicked");
     };
 
     return (

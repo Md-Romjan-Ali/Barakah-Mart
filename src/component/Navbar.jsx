@@ -35,7 +35,6 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
     const { data: session } = authClient.useSession()
-    console.log(session, 'from navbar');
     const logoutHandle = async () => {
         await authClient.signOut();
     }
